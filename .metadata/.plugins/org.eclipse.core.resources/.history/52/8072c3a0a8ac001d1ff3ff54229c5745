@@ -1,0 +1,102 @@
+<%@page import="com.modalclasses.SrcDestDate"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.ResultSet"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<%@page import="com.modalclasses.AvailableModal"%>  
+<% ArrayList<AvailableModal> ams =(ArrayList<AvailableModal>)request.getAttribute("AvailableModals"); %>
+<% ArrayList<SrcDestDate> all=(ArrayList<SrcDestDate>) request.getAttribute("separate"); %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- Demo CSS (No need to include it into your project) -->
+    <link rel="stylesheet" href="./css/demo.css" />
+  </head>
+  <body>
+  
+    <div class="main">
+    
+      <main class="app">
+        <div class="screen-wrap">
+          <section class="screen-bus" style="opacity: 1">
+            <div class="screen-bus__location-filter-wrap">
+              <div class="screen-bus__location-filter-row">
+                <div class="screen-bus__location">
+                  <div class="screen-bus__location-row">
+                    <span class="screen-bus__location-col"> <%=obj.getSource()%> </span>
+                    <span class="screen-home__rs-arrow"></span>
+                    <span class="screen-bus__location-col"><%=av.getDestination()%></span>
+                  </div>
+                  <div class="screen-bus__date-row">
+                    <span>Wed, 10/ 12/ 2019</span> -
+                    <span>Fri, 12/ 12/ 2019</span>
+                  </div>
+                </div>
+                <div class="screen-bus__filter">
+                  <figure>
+                    <img src="https://i.ibb.co/ZJt9tkM/filter.png" />
+                  </figure>
+                </div>
+              </div>
+            </div>
+            
+           
+            <% for(AvailableModal av :ams){ %>
+            <div class="screen-bus__travels-wrap">
+              <div class="screen-bus__travels-row">
+                <div
+                  class="screen-bus__travels-col"
+                  style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0)"
+                >
+                  <div class="screen-bus__name-time-seat">
+                    <div class="screen-bus__name-wrap">
+                      <span class="screen-bus__name"><%=av.getRegNo() %></span>
+                      <span class="screen-bus__type">Non A/C</span>
+                    </div>
+                    <div class="screen-bus__time-wrap">
+                      <div class="screen-bus__time">
+                        <div class="screen-bus__start"><%=av.getArrivalTime() %></div>
+                        <div class="screen-bus__time-arrow-wrap">
+                          <span class="screen-bus__time-arrow"></span>
+                        </div>
+                        <div class="screen-bus__end"><%=av.getDeparturetime() %></div>
+                      </div>
+                      <div class="screen-bus__hrs">
+                        <span>2 hrs</span>
+                      </div>
+                    </div>
+                    <div class="screen-bus__seat-wrap">
+                      <div>
+                        <span class="screen-bus__count">26</span>
+                        Seats Available<br />
+                        <span><span>₹</span> <%=av.getTicketCharges() %></span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                      
+                      <div class="screen-bus__price">
+                        <button>
+                          <a href="./seatsAvailable.jsp">click to book</a>
+                        </button>
+                      </div>
+                    
+                </div>
+            </div>
+            </div>
+             <% }%>
+          </section>
+        </div>
+     
+      </main>
+    </div>
+    
+  </body>
+</html>

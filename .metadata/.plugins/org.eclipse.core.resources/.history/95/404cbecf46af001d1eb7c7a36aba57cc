@@ -1,0 +1,6 @@
+package com.modalclasses;
+
+public class SeatModal {
+private int seatNo;
+
+}

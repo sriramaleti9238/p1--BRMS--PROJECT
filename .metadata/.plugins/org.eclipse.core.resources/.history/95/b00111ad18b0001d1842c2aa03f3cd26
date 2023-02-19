@@ -1,0 +1,21 @@
+package com.viewticket;
+
+public class ViewTicketModal {
+	private String RegNo;
+	private int seatNo;
+	private String birthType;
+	private String status;
+	private String pnr;
+	private String reservDateTime;
+	private String userName;
+	private String email;
+	private String mblNo; 
+	private String age;
+	private String src;
+	private String dest;
+	private String dateOfTravel;
+	private String boardTime;
+	private String arrivalTime;
+	private String ticketCharges;
+	
+}

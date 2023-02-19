@@ -1,0 +1,48 @@
+package com.seatstore;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.modalclasses.SrcDestDate;
+
+
+import jakarta.servlet.ServletException;
+
+@WebServlet("/linklogiin")
+public class SeatStore extends HttpServlet{
+
+	protected void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		System.out.println("its printing on the console");
+		PrintWriter pw =res.getWriter();
+		res.setContentType("text/html");
+		
+		String seatNo = req.getParameter("seatNumber");
+		
+		int seatNoo = Integer.parseInt(seatNo);
+		System.out.println("Seat number is "+seatNoo);
+		
+		
+		try {
+			SrcDestDate sd = new SrcDestDate();
+			ArrayList<SrcDestDate>  al = new ArrayList<SrcDestDate>();
+			sd.setSeatNo(seatNoo);
+			al.add(sd);
+			RequestDispatcher rd;
+			req.setAttribute("SeatNumberTransfer", seatNo);
+			ServletContext ctxt = getServletContext();
+			rd =ctxt.getRequestDispatcher("/loginpage.jsp");
+			rd.forward(req, res);
+		} catch (Exception e) {
+			System.out.println("exception occured transferring seat number");
+		}
+	}
+}

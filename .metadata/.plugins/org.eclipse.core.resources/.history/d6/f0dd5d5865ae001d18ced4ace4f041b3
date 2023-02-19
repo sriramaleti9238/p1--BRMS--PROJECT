@@ -1,0 +1,9 @@
+package com.seatstore;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet("/linklogiin")
+public class SeatStore extends HttpServlet{
+
+}

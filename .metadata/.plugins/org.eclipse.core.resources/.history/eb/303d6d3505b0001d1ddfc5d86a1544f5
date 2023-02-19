@@ -1,0 +1,21 @@
+package com.finalpage;
+
+import java.io.IOException;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import jakarta.servlet.ServletException;
+
+@WebServlet("/finalpage")
+public class FinalServlet {
+	protected void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{try {
+		req.getRequestDispatcher("finalticketfull.jsp").forward(req, res);
+	}catch (javax.servlet.ServletException e) {
+		e.printStackTrace();
+	}
+	}
+	
+}

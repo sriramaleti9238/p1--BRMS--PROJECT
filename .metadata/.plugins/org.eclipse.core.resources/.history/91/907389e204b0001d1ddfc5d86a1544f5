@@ -1,0 +1,16 @@
+package com.finalpage;
+
+import java.io.IOException;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/finalpage")
+public class FinalServlet {
+	protected void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		System.out.println("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+	}
+	
+}

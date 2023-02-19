@@ -1,0 +1,152 @@
+package com.viewticket;
+
+public class ViewTicketModal {
+	private String RegNo;
+	private int seatNo;
+	private String birthType;
+	private String status;
+	private String pnr;
+	private String reservDateTime;
+	private String userName;
+	private String email;
+	private String mblNo; 
+	private String age;
+	private String src;
+	private String dest;
+	private String dateOfTravel;
+	private String boardTime;
+	private String arrivalTime;
+	private String ticketCharges;
+	public ViewTicketModal() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public ViewTicketModal(String regNo, int seatNo, String birthType, String status, String pnr, String reservDateTime,
+			String userName, String email, String mblNo, String age, String src, String dest, String dateOfTravel,
+			String boardTime, String arrivalTime, String ticketCharges) {
+		super();
+		RegNo = regNo;
+		this.seatNo = seatNo;
+		this.birthType = birthType;
+		this.status = status;
+		this.pnr = pnr;
+		this.reservDateTime = reservDateTime;
+		this.userName = userName;
+		this.email = email;
+		this.mblNo = mblNo;
+		this.age = age;
+		this.src = src;
+		this.dest = dest;
+		this.dateOfTravel = dateOfTravel;
+		this.boardTime = boardTime;
+		this.arrivalTime = arrivalTime;
+		this.ticketCharges = ticketCharges;
+	}
+	public String getRegNo() {
+		return RegNo;
+	}
+	public void setRegNo(String regNo) {
+		RegNo = regNo;
+	}
+	public int getSeatNo() {
+		return seatNo;
+	}
+	public void setSeatNo(int seatNo) {
+		this.seatNo = seatNo;
+	}
+	public String getBirthType() {
+		return birthType;
+	}
+	public void setBirthType(String birthType) {
+		this.birthType = birthType;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getPnr() {
+		return pnr;
+	}
+	public void setPnr(String pnr) {
+		this.pnr = pnr;
+	}
+	public String getReservDateTime() {
+		return reservDateTime;
+	}
+	public void setReservDateTime(String reservDateTime) {
+		this.reservDateTime = reservDateTime;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getMblNo() {
+		return mblNo;
+	}
+	public void setMblNo(String mblNo) {
+		this.mblNo = mblNo;
+	}
+	public String getAge() {
+		return age;
+	}
+	public void setAge(String age) {
+		this.age = age;
+	}
+	public String getSrc() {
+		return src;
+	}
+	public void setSrc(String src) {
+		this.src = src;
+	}
+	public String getDest() {
+		return dest;
+	}
+	public void setDest(String dest) {
+		this.dest = dest;
+	}
+	public String getDateOfTravel() {
+		return dateOfTravel;
+	}
+	public void setDateOfTravel(String dateOfTravel) {
+		this.dateOfTravel = dateOfTravel;
+	}
+	public String getBoardTime() {
+		return boardTime;
+	}
+	public void setBoardTime(String boardTime) {
+		this.boardTime = boardTime;
+	}
+	public String getArrivalTime() {
+		return arrivalTime;
+	}
+	public void setArrivalTime(String arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
+	public String getTicketCharges() {
+		return ticketCharges;
+	}
+	public void setTicketCharges(String ticketCharges) {
+		this.ticketCharges = ticketCharges;
+	}
+	@Override
+	public String toString() {
+		return "ViewTicketModal [RegNo=" + RegNo + ", seatNo=" + seatNo + ", birthType=" + birthType + ", status="
+				+ status + ", pnr=" + pnr + ", reservDateTime=" + reservDateTime + ", userName=" + userName + ", email="
+				+ email + ", mblNo=" + mblNo + ", age=" + age + ", src=" + src + ", dest=" + dest + ", dateOfTravel="
+				+ dateOfTravel + ", boardTime=" + boardTime + ", arrivalTime=" + arrivalTime + ", ticketCharges="
+				+ ticketCharges + "]";
+	}
+	
+	
+	
+}

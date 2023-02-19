@@ -1,0 +1,107 @@
+package com.srcdest;
+
+import java.io.IOException;
+
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.modalclasses.AvailableModal;
+import com.mysql.cj.jdbc.CallableStatement;
+
+@WebServlet("/register")
+public class SrcDestServlet extends HttpServlet{
+	
+	protected void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		PrintWriter pw =res.getWriter();
+		res.setContentType("text/html");
+		System.out.println("comming");
+		String src= req.getParameter("source");
+		String dest =req.getParameter("destination");
+		String date = req.getParameter("datee");
+		System.out.println(src);
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("driver found");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("driver not foundddddd");
+		}
+		try (Connection con =DriverManager.getConnection("jdbc:mysql://localhost/newproject","root","As@13042000")){
+			
+			System.out.println("cs--1");
+			CallableStatement cs= (CallableStatement) con.prepareCall("{call webselecting(?,?,?)}");
+			String src1=src,dest1=dest,date1=date;
+			System.out.println("cs--2");
+			cs.setString(1, src);
+			cs.setString(2, dest);
+			cs.setString(3, date);
+			
+			System.out.println(src1+" and "+dest1+" AND "+date1);
+			
+
+			ResultSet rs=cs.executeQuery();
+			RequestDispatcher rd;
+
+			if(rs.next())
+			{
+				while(rs.next())
+				{
+					AvailableModal obj=new AvailableModal();
+					
+					List<AvailableModal> ls=new ArrayList<AvailableModal>();
+					obj.setRegNo(rs.getString(1));
+					obj.setSource(rs.getString(2));
+					obj.setDestination(rs.getString(3));
+					obj.setDateofTravel(rs.getString(4));
+					obj.setArrivalTime(rs.getString(5));
+					obj.setDeparturetime(rs.getString(6));
+					obj.setTicketCharges(rs.getString(7));
+					
+					ls.add(obj);
+					
+					System.out.println("daatabase data is there");
+					req.setAttribute("output", obj);
+					
+					System.out.println(ls);
+					System.out.println(obj);
+					ServletContext ctxt = getServletContext();
+					rd =ctxt.getRequestDispatcher("/availablebusdetails.jsp");
+					rd.forward(req, res);
+				}
+				
+			}
+			else
+			{
+				pw.println("requested route is not there");
+			}
+			
+		} 
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+			pw.println("<br>-----"+e.getMessage()+"----<br>");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			pw.println("<br>-----"+e.getMessage()+"----<br>");
+		}
+		
+	}
+	protected void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		doPost(req,res);
+	}
+}

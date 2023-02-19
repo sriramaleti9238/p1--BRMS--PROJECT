@@ -1,0 +1,67 @@
+package com.srcdest;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.mysql.cj.jdbc.CallableStatement;
+
+@WebServlet("/register")
+public class SrcDestServlet extends HttpServlet{
+	
+	protected void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		PrintWriter pw =res.getWriter();
+		res.setContentType("text/html");
+		System.out.println("comming");
+		String src= req.getParameter("source");
+		String dest =req.getParameter("destination");
+		String date = req.getParameter("datee");
+		System.out.println(src);
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("driver not found");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("driver not foundddddd");
+		}
+		try (Connection con =DriverManager.getConnection("jdbc:mysql://localhost/newproject","root","As@13042000")){
+			CallableStatement cs= (CallableStatement) con.prepareCall("{call webselecting(?,?,?)}");
+			cs.setString(1, src);
+			cs.setString(2, dest);
+			cs.setString(3, date);
+			
+			int count= cs.executeUpdate();
+			
+			if(count==1)
+			{
+				System.out.println("<h1>executed successfully</h1>");
+			}
+			else
+			{
+				System.out.println("<h1>executed not successfully</h1>");
+			}
+		} 
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+			pw.println("<br>-----"+e.getMessage()+"----<br>");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			pw.println("<br>-----"+e.getMessage()+"----<br>");
+		}
+		
+	}
+	protected void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		doPost(req,res);
+	}
+}

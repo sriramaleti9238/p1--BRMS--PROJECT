@@ -1,0 +1,79 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MSTANG</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/clicktoconform.css" />
+  </head>
+  <body>
+    <div class="text-center">
+      <!-- Button HTML (to Trigger Modal) -->
+      <img
+        src="./img/qrcode.png"
+        alt="qrcode"
+        style="margin-top: 106px; width: 43vh; height: 42vh"
+      />
+      <br />
+      <a href="#myModal" class="trigger-btn" data-toggle="modal"
+        >CLICK HERE TO REDIRECT TO PAGE
+      </a>
+    </div>
+
+    <!-- Modal HTML -->
+    <form action="finalpage" method="post">
+    <div id="myModal" class="modal fade">
+      <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="icon-box">
+              <i class="material-icons">&#xE876;</i>
+            </div>
+            <h4 class="modal-title">Awesome!</h4>
+          </div>
+          <div class="modal-body">
+            <p class="text-center">
+              Your payment is successfull <br />
+              Your booking has been confirmed. Check your email for ticket
+              detials.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <!-- <a class="btn btn-success btn-block" href="./finalticketfull.jsp">
+              CLICK TO GENERATE TICKET</a
+            > -->
+            <input type="submit" hidden><a class="btn btn-success btn-block">
+              CLICK TO GENERATE TICKET</a 
+            ></input>
+            <!-- <button class="btn btn-success btn-block" data-dismiss="modal">
+              OK
+            </button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+  </body>
+</html>

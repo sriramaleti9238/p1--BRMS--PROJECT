@@ -1,0 +1,54 @@
+package com.finalpage;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.mysql.cj.jdbc.CallableStatement;
+
+import jakarta.servlet.ServletException;
+
+@WebServlet("/finalpage")
+public class FinalServlet extends HttpServlet {
+	protected void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		PrintWriter pw= res.getWriter();
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			System.out.println("driver found");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("driver not foundddddd");
+		}
+		try (Connection con =DriverManager.getConnection("jdbc:mysql://localhost/newproject","root","As@13042000")){
+			
+			System.out.println("cs--1");
+			CallableStatement cs= (CallableStatement) con.prepareCall("{call calling_pnr()}");
+			
+			ResultSet rs=cs.executeQuery();	
+		} 
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+			pw.println("<br>-----"+e.getMessage()+"----<br>");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			pw.println("<br>-----"+e.getMessage()+"----<br>");
+		}
+		try {
+			req.getRequestDispatcher("/finalticketfull.jsp").forward(req, res);
+		}catch (javax.servlet.ServletException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}

@@ -1,0 +1,16 @@
+package com.viewticket;
+
+import java.io.IOException;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/viewwtick")
+public class ViewTickServlet extends HttpServlet{
+	protected void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException
+	{
+		String tickNo = req.getParameter("ticketnumber");
+	}
+}

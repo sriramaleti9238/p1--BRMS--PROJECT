@@ -1,0 +1,9 @@
+package com.viewticket;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet("/viewwtick")
+public class ViewTickServlet extends HttpServlet{
+
+}
